@@ -56,29 +56,27 @@ create user TEST_ACCOUNT;
 /*==============================================================*/
 create table TEST_ACCOUNT.ADMINISTRATOR
 (
-    ADMINISTRATOR_ID     varchar(20) not null comment '?????ID',
-    NAME                 varchar(20) comment '????',
-    GENDER               numeric(1,0) comment '???',
-    BIRTHDATE            datetime comment '??????????????????????????????',
-    CONTACT              varchar(20) comment '??????',
-    PASSWORD             varchar(200) comment '????',
+    ADMINISTRATOR_ID     varchar(20) not null,
+    NAME                 varchar(20),
+    GENDER               numeric(1,0),
+    BIRTHDATE            datetime,
+    CONTACT              varchar(20),
+    PASSWORD             varchar(200),
     primary key (ADMINISTRATOR_ID)
 );
-
-alter table TEST_ACCOUNT.ADMINISTRATOR comment '?????';
 
 /*==============================================================*/
 /* Table: CHATRECORD                                            */
 /*==============================================================*/
 create table TEST_ACCOUNT.CHATRECORD
 (
-    RECORDID             varchar(30) comment '��????????????',
-    DOCTOR_ID            varchar(20) not null comment '???��???????????',
-    PATIENT_ID           varchar(20) not null comment '????��???????????',
-    MESSAGE              varchar(2000) comment '???????????????????????��??',
-    SENDER_TYPE          numeric(8,0) comment '???????????????????',
-    TIMESTAMP            timestamp not null comment '??????????',
-    READ_STATUS          numeric(8,0) comment '?????????',
+    RECORDID             varchar(30),
+    DOCTOR_ID            varchar(20) not null,
+    PATIENT_ID           varchar(20) not null,
+    MESSAGE              varchar(2000),
+    SENDER_TYPE          numeric(8,0),
+    TIMESTAMP            timestamp not null,
+    READ_STATUS          numeric(8,0),
     primary key (DOCTOR_ID, PATIENT_ID, TIMESTAMP)
 );
 
@@ -87,158 +85,138 @@ create table TEST_ACCOUNT.CHATRECORD
 /*==============================================================*/
 create table TEST_ACCOUNT.CONSULTATION_INFO
 (
-    DOCTOR_ID            varchar(10) not null comment '???ID',
-    CLINIC_NAME          varchar(200) not null comment '????????',
-    DATE_TIME            datetime not null comment '????????',
-    "PERIOD"               numeric(8,0) not null comment '???????��??????',
+    DOCTOR_ID            varchar(10) not null,
+    CLINIC_NAME          varchar(200) not null,
+    DATE_TIME            datetime not null,
+    "PERIOD"               numeric(8,0) not null,
     primary key (DOCTOR_ID, CLINIC_NAME, DATE_TIME, PERIOD)
 );
-
-alter table TEST_ACCOUNT.CONSULTATION_INFO comment '???????';
 
 /*==============================================================*/
 /* Table: CONSULTING_ROOM                                       */
 /*==============================================================*/
 create table TEST_ACCOUNT.CONSULTING_ROOM
 (
-    CONSULTING_ROOM_NAME varchar(30) not null comment '????????',
-    CONSULTANT_CAPACITY  numeric(8,0) comment '????????',
+    CONSULTING_ROOM_NAME varchar(30) not null,
+    CONSULTANT_CAPACITY  numeric(8,0),
     primary key (CONSULTING_ROOM_NAME)
 );
-
-alter table TEST_ACCOUNT.CONSULTING_ROOM comment '????';
 
 /*==============================================================*/
 /* Table: DEPARTMENT2                                           */
 /*==============================================================*/
 create table TEST_ACCOUNT.DEPARTMENT2
 (
-    DEPARTMENT_NAME      varchar(80) not null comment '????????',
-    DEPARTMENT_DESCRIPTION varchar(800) comment '????????',
+    DEPARTMENT_NAME      varchar(80) not null,
+    DEPARTMENT_DESCRIPTION varchar(800),
     primary key (DEPARTMENT_NAME)
 );
-
-alter table TEST_ACCOUNT.DEPARTMENT2 comment '????????';
 
 /*==============================================================*/
 /* Table: DOCTOR                                                */
 /*==============================================================*/
 create table TEST_ACCOUNT.DOCTOR
 (
-    DOCTOR_ID            varchar(20) not null comment '???ID',
-    NAME                 varchar(20) comment '????',
-    GENDER               numeric(1,0) comment '???',
-    BIRTHDATE            datetime comment '??????????????????????????',
-    TITLE                varchar(20) comment '???',
-    CONTACT              varchar(20) comment '??????',
-    SECONDARY_DEPARTMENT varchar(50) comment '????????????',
-    PHOTOURL             varchar(600) comment '??????url',
-    PASSWORD             varchar(200) comment '????',
-    SKILLEDIN            varchar(1000) comment '?��????????????',
+    DOCTOR_ID            varchar(20) not null,
+    NAME                 varchar(20),
+    GENDER               numeric(1,0),
+    BIRTHDATE            datetime,
+    TITLE                varchar(20),
+    CONTACT              varchar(20),
+    SECONDARY_DEPARTMENT varchar(50),
+    PHOTOURL             varchar(600),
+    PASSWORD             varchar(200),
+    SKILLEDIN            varchar(1000),
     primary key (DOCTOR_ID)
 );
-
-alter table TEST_ACCOUNT.DOCTOR comment '???';
 
 /*==============================================================*/
 /* Table: LEAVE_APPLICATION                                     */
 /*==============================================================*/
 create table TEST_ACCOUNT.LEAVE_APPLICATION
 (
-    LEAVE_NOTE_ID        varchar(30) not null comment '????ID',
-    LEAVE_APPLICATION_TIME timestamp comment '???????',
-    LEAVE_START_DATE     timestamp comment '???????',
-    LEAVE_END_DATE       timestamp comment '????????',
-    LEAVE_NOTE_REMARK    varchar(10) comment '????????',
+    LEAVE_NOTE_ID        varchar(30) not null,
+    LEAVE_APPLICATION_TIME timestamp,
+    LEAVE_START_DATE     timestamp,
+    LEAVE_END_DATE       timestamp,
+    LEAVE_NOTE_REMARK    varchar(10),
     primary key (LEAVE_NOTE_ID)
 );
-
-alter table TEST_ACCOUNT.LEAVE_APPLICATION comment '????????';
 
 /*==============================================================*/
 /* Table: MEDICINE_DESCRIPTION                                  */
 /*==============================================================*/
 create table TEST_ACCOUNT.MEDICINE_DESCRIPTION
 (
-    MEDICINE_NAME        varchar(100) not null comment '??????',
-    MEDICINE_TYPE        varchar(40) comment '??????',
-    APPLICABLE_SYMPTOM   varchar(600) comment '???��??',
-    VULGO                varchar(200) comment '?????????????????',
-    SPECIFICATION        varchar(500) comment '?????',
-    SINGLEDOSE           varchar(300) comment '???��???',
-    ADMINISTRATION       varchar(400) comment '???��???',
-    ATTENTION            varchar(400) comment '???????',
-    FREQUENCY            varchar(200) comment '???????',
+    MEDICINE_NAME        varchar(100) not null,
+    MEDICINE_TYPE        varchar(40),
+    APPLICABLE_SYMPTOM   varchar(600),
+    VULGO                varchar(200),
+    SPECIFICATION        varchar(500),
+    SINGLEDOSE           varchar(300),
+    ADMINISTRATION       varchar(400),
+    ATTENTION            varchar(400),
+    FREQUENCY            varchar(200),
     primary key (MEDICINE_NAME)
 );
-
-alter table TEST_ACCOUNT.MEDICINE_DESCRIPTION comment '?????';
 
 /*==============================================================*/
 /* Table: MEDICINE_OUT                                          */
 /*==============================================================*/
 create table TEST_ACCOUNT.MEDICINE_OUT
 (
-    MEDICINE_NAME        varchar(40) not null comment '??????',
-    MANUFACTURER         varchar(40) not null comment '????????',
-    PRODUCTION_DATE      datetime not null comment '????????',
-    PURCHASE_AMOUNT      numeric(8,0) not null comment '????????',
-    DELIVER_DATE         timestamp not null comment '????????',
-    PATIENT_ID           varchar(20) not null comment '??????',
+    MEDICINE_NAME        varchar(40) not null,
+    MANUFACTURER         varchar(40) not null,
+    PRODUCTION_DATE      datetime not null,
+    PURCHASE_AMOUNT      numeric(8,0) not null,
+    DELIVER_DATE         timestamp not null,
+    PATIENT_ID           varchar(20) not null,
     primary key (MEDICINE_NAME, MANUFACTURER, PRODUCTION_DATE, PURCHASE_AMOUNT, DELIVER_DATE, PATIENT_ID),
     check (PURCHASE_AMOUNT > 0)
 );
-
-alter table TEST_ACCOUNT.MEDICINE_OUT comment '??????';
 
 /*==============================================================*/
 /* Table: MEDICINE_PURCHASE                                     */
 /*==============================================================*/
 create table TEST_ACCOUNT.MEDICINE_PURCHASE
 (
-    MEDICINE_NAME        varchar(40) not null comment '??????',
-    MANUFACTURER         varchar(460) not null comment '????????',
-    PRODUCTION_DATE      datetime not null comment '????????',
-    PURCHASE_DATE        datetime not null comment '???????',
-    ADMINISTRATOR_ID     varchar(20) comment '????????',
-    PURCHASE_AMOUNT      numeric(8,0) comment '???????',
-    PURCHASE_PRICE       numeric(6,2) comment '??????',
+    MEDICINE_NAME        varchar(40) not null,
+    MANUFACTURER         varchar(460) not null,
+    PRODUCTION_DATE      datetime not null,
+    PURCHASE_DATE        datetime not null,
+    ADMINISTRATOR_ID     varchar(20),
+    PURCHASE_AMOUNT      numeric(8,0),
+    PURCHASE_PRICE       numeric(6,2),
     primary key (MEDICINE_NAME, MANUFACTURER, PRODUCTION_DATE, PURCHASE_DATE),
     check (PURCHASE_PRICE > 0)
 );
-
-alter table TEST_ACCOUNT.MEDICINE_PURCHASE comment '??????';
 
 /*==============================================================*/
 /* Table: MEDICINE_SELL                                         */
 /*==============================================================*/
 create table TEST_ACCOUNT.MEDICINE_SELL
 (
-    MEDICINE_NAME        varchar(40) not null comment '??????',
-    MANUFACTURER         varchar(80) not null comment '????????',
-    SELLING_PRICE        numeric(6,2) comment '?????',
+    MEDICINE_NAME        varchar(40) not null,
+    MANUFACTURER         varchar(80) not null,
+    SELLING_PRICE        numeric(6,2),
     primary key (MEDICINE_NAME, MANUFACTURER)
 );
-
-alter table TEST_ACCOUNT.MEDICINE_SELL comment '??????';
 
 /*==============================================================*/
 /* Table: MEDICINE_STOCK                                        */
 /*==============================================================*/
 create table TEST_ACCOUNT.MEDICINE_STOCK
 (
-    MEDICINE_NAME        varchar(40) not null comment '??????',
-    MANUFACTURER         varchar(40) not null comment '????????',
-    PRODUCTION_DATE      datetime not null comment '????????',
-    MEDICINE_SHELFLIFE   numeric(8,0) comment '??????',
-    MEDICINE_AMOUNT      numeric(8,0) comment '??????',
-    THRESHOLD_VALUE      numeric(8,0) comment '?????????',
-    CLEAN_DATE           datetime comment '??????????',
-    CLEAN_ADMINISTRATOR  varchar(20) comment '??????????',
+    MEDICINE_NAME        varchar(40) not null,
+    MANUFACTURER         varchar(40) not null,
+    PRODUCTION_DATE      datetime not null ,
+    MEDICINE_SHELFLIFE   numeric(8,0),
+    MEDICINE_AMOUNT      numeric(8,0),
+    THRESHOLD_VALUE      numeric(8,0),
+    CLEAN_DATE           datetime,
+    CLEAN_ADMINISTRATOR  varchar(20),
     primary key (MEDICINE_NAME, MANUFACTURER, PRODUCTION_DATE)
 );
-
-alter table TEST_ACCOUNT.MEDICINE_STOCK comment '?????';
 
 /*==============================================================*/
 /* Table: OUTPATIENT_ORDER                                      */
@@ -251,88 +229,78 @@ create table TEST_ACCOUNT.OUTPATIENT_ORDER
     primary key (ORDER_ID)
 );
 
-alter table TEST_ACCOUNT.OUTPATIENT_ORDER comment '??????';
-
 /*==============================================================*/
 /* Table: PATIENT                                               */
 /*==============================================================*/
 create table TEST_ACCOUNT.PATIENT
 (
-    PATIENT_ID           varchar(20) not null comment '??????ID',
-    NAME                 varchar(20) comment '??????????',
-    GENDER               numeric(1,0) comment '???',
-    BIRTH_DATE           datetime comment '??????????????????',
-    CONTACT              varchar(20) comment '??????',
-    PASSWORD             varchar(200) comment '????',
-    COLLEGE              varchar(40) comment '??',
-    COUNSELLOR           varchar(20) comment '?????',
+    PATIENT_ID           varchar(20) not null,
+    NAME                 varchar(20),
+    GENDER               numeric(1,0),
+    BIRTH_DATE           datetime,
+    CONTACT              varchar(20),
+    PASSWORD             varchar(200),
+    COLLEGE              varchar(40),
+    COUNSELLOR           varchar(20),
     primary key (PATIENT_ID)
 );
-
-alter table TEST_ACCOUNT.PATIENT comment '??????';
 
 /*==============================================================*/
 /* Table: PRESCRIPTION                                          */
 /*==============================================================*/
 create table TEST_ACCOUNT.PRESCRIPTION
 (
-    PRESCRIPTION_ID      varchar(40) not null comment '???????',
-    TOTAL_PRICE          numeric(6,2) comment '????',
-    DOCTOR_ID            varchar(20) comment '??????',
-    PAYSTATE             numeric(8,0) comment '0?��?????1????',
+    PRESCRIPTION_ID      varchar(40) not null,
+    TOTAL_PRICE          numeric(6,2),
+    DOCTOR_ID            varchar(20),
+    PAYSTATE             numeric(8,0),
     primary key (PRESCRIPTION_ID)
 );
-
-alter table TEST_ACCOUNT.PRESCRIPTION comment '????';
 
 /*==============================================================*/
 /* Table: PRESCRIPTION_MEDICINE                                 */
 /*==============================================================*/
 create table TEST_ACCOUNT.PRESCRIPTION_MEDICINE
 (
-    PRESCRIPTION_ID      varchar(40) not null comment '???????',
-    MEDICINE_NAME        varchar(200) not null comment '??????',
-    MEDICATION_INSTRUCTION varchar(800) comment '???��??',
-    MEDICINE_PRICE       numeric(6,2) comment '?????',
-    QUANTITY             numeric(8,0) comment '??????',
+    PRESCRIPTION_ID      varchar(40) not null,
+    MEDICINE_NAME        varchar(200) not null,
+    MEDICATION_INSTRUCTION varchar(800),
+    MEDICINE_PRICE       numeric(6,2),
+    QUANTITY             numeric(8,0),
     primary key (PRESCRIPTION_ID, MEDICINE_NAME)
 );
-
-alter table TEST_ACCOUNT.PRESCRIPTION_MEDICINE comment '????????';
 
 /*==============================================================*/
 /* Table: REGISTRATION                                          */
 /*==============================================================*/
 create table TEST_ACCOUNT.REGISTRATION
 (
-    PATIENT_ID           varchar(20) not null comment '??????ID',
-    DOCTOR_ID            varchar(20) not null comment '???ID',
-    APPOINTMENT_TIME     datetime not null comment '?????',
-    "PERIOD"               numeric(8,0) not null comment '?????��????8??00-9??00?1??9??00-10??00?2????????????????16??00-17??00?7??11???��?13?????',
-    REGISTORDER          numeric(8,0) comment '??????',
-    STATE                numeric(8,0) not null comment '??????????��????0???????1????????-1',
-    PRESCRIPTIONID       varchar(200) comment '??????????',
-    CHECKIN              numeric(8,0) comment '??????????0??��?1????',
-    QRCODEURL            varchar(2000) comment '?????????url',
-    ORDERTIME            timestamp comment '??????',
+    PATIENT_ID           varchar(20) not null,
+    DOCTOR_ID            varchar(20) not null,
+    APPOINTMENT_TIME     datetime not null,
+    "PERIOD"               numeric(8,0) not null,
+    REGISTORDER          numeric(8,0),
+    STATE                numeric(8,0) not null,
+    PRESCRIPTIONID       varchar(200),
+    CHECKIN              numeric(8,0),
+    QRCODEURL            varchar(2000),
+    ORDERTIME            timestamp,
     primary key (PATIENT_ID, DOCTOR_ID, APPOINTMENT_TIME, STATE, PERIOD)
 );
-
-alter table TEST_ACCOUNT.REGISTRATION comment '???';
 
 /*==============================================================*/
 /* Table: TEMPLATE                                              */
 /*==============================================================*/
 create table TEST_ACCOUNT.TEMPLATE
 (
-    PROBLEM              varchar(100) comment '????',
-    ILLNESS              varchar(50) comment '????',
-    COLUMN1              varchar(50) comment '?????',
-    SYMPTOM              varchar(50) comment '???',
-    DIAGNOSE             varchar(30) comment '???',
-    PRESCRIPTION         varchar(20) comment '???????',
-    MEDICINE             varchar(70) comment '????',
-    NAME                 varchar(40) not null comment '????',
+    PROBLEM              varchar(100),
+    ILLNESS              varchar(50),
+    COLUMN1              varchar(50),
+    SYMPTOM              varchar(50),
+    DIAGNOSE             varchar(30),
+    PRESCRIPTION         varchar(20),
+    MEDICINE             varchar(70),
+    NAME                 varchar(40) not null,
     primary key (NAME)
 );
 
@@ -341,49 +309,43 @@ create table TEST_ACCOUNT.TEMPLATE
 /*==============================================================*/
 create table TEST_ACCOUNT.TREATMENT_FEEDBACK
 (
-    PATIENT_ID           varchar(20) comment '??????ID v',
-    DOCTOR_ID            varchar(20) comment '???ID',
-    TREATMENT_SCORE      numeric(8,0) comment '????????',
-    EVALUATION           varchar(200) comment '???????',
-    DIAGNOSEDID          varchar(40) not null comment '???????',
+    PATIENT_ID           varchar(20),
+    DOCTOR_ID            varchar(20),
+    TREATMENT_SCORE      numeric(8,0),
+    EVALUATION           varchar(200),
+    DIAGNOSEDID          varchar(40) not null,
     primary key (DIAGNOSEDID)
 );
-
-alter table TEST_ACCOUNT.TREATMENT_FEEDBACK comment '??????';
 
 /*==============================================================*/
 /* Table: TREATMENT_RECORD                                      */
 /*==============================================================*/
 create table TEST_ACCOUNT.TREATMENT_RECORD
 (
-    DIAGNOSIS_RECORD_ID  varchar(30) not null comment '?????ID',
-    DOCTOR_ID            varchar(20) comment '???ID',
-    PATIENT_ID           varchar(20) comment '??????ID',
-    LEAVE_NOTE_ID        varchar(30) comment '????ID',
+    DIAGNOSIS_RECORD_ID  varchar(30) not null,
+    DOCTOR_ID            varchar(20),
+    PATIENT_ID           varchar(20),
+    LEAVE_NOTE_ID        varchar(30),
     primary key (DIAGNOSIS_RECORD_ID)
 );
-
-alter table TEST_ACCOUNT.TREATMENT_RECORD comment '?????';
 
 /*==============================================================*/
 /* Table: TREATMENT_RECORD2                                     */
 /*==============================================================*/
 create table TEST_ACCOUNT.TREATMENT_RECORD2
 (
-    DIAGNOSE_ID          varchar(30) not null comment '????????',
-    DIAGNOSE_TIME        timestamp comment '??????',
-    COMMENTSTATE         numeric(8,0) comment '???????????????0��?????1????',
-    SELFREPORTED         varchar(2000) comment '????',
-    PRESENTHIS           varchar(2000) comment '????',
-    ANAMNESIS            varchar(2000) comment '???????',
-    SIGN                 varchar(1000) comment '????',
-    CLINICDIA            varchar(2000) comment '???????',
-    ADVICE               varchar(2000) comment '???????',
-    KINDQUANTITY         numeric(8,0) comment '??????????',
+    DIAGNOSE_ID          varchar(30) not null,
+    DIAGNOSE_TIME        timestamp,
+    COMMENTSTATE         numeric(8,0),
+    SELFREPORTED         varchar(2000),
+    PRESENTHIS           varchar(2000),
+    ANAMNESIS            varchar(2000),
+    SIGN                 varchar(1000),
+    CLINICDIA            varchar(2000),
+    ADVICE               varchar(2000),
+    KINDQUANTITY         numeric(8,0),
     primary key (DIAGNOSE_ID)
 );
-
-alter table TEST_ACCOUNT.TREATMENT_RECORD2 comment '?????';
 
 alter table TEST_ACCOUNT.CHATRECORD add constraint CHATRECORD_FK1 foreign key (DOCTOR_ID)
     references TEST_ACCOUNT.DOCTOR (DOCTOR_ID) on delete restrict on update restrict;
