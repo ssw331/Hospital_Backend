@@ -1,6 +1,7 @@
 package com.ssw331.hospital.dto;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.Getter;
 import org.springframework.data.relational.core.mapping.Table;
@@ -13,9 +14,10 @@ import java.sql.Timestamp;
  */
 @Getter
 @Data
-@Table("consultation_info")
+@Table(name = "consultation_info")
 public class ConsultationInfo {
-    @TableField("DOCTOR_ID")
+// 这里的TableId是用于测试是否影响功能，如果不影响实际功能的话就不用动了
+    @TableId("DOCTOR_ID")
     private String doctorId;
     @TableField("CLINIC_NAME")
     private String clinicName;
