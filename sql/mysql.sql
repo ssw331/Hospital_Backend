@@ -12,7 +12,7 @@ drop table if exists TEST_ACCOUNT.CONSULTATION_INFO;
 
 drop table if exists TEST_ACCOUNT.CONSULTING_ROOM;
 
-drop table if exists TEST_ACCOUNT.DEPARTMENT2;
+drop table if exists TEST_ACCOUNT.DEPARTMENT;
 
 drop table if exists TEST_ACCOUNT.DOCTOR;
 
@@ -103,9 +103,9 @@ create table TEST_ACCOUNT.CONSULTING_ROOM
 );
 
 /*==============================================================*/
-/* Table: DEPARTMENT2                                           */
+/* Table: DEPARTMENT                                            */
 /*==============================================================*/
-create table TEST_ACCOUNT.DEPARTMENT2
+create table TEST_ACCOUNT.DEPARTMENT
 (
     DEPARTMENT_NAME      varchar(80) not null,
     DEPARTMENT_DESCRIPTION varchar(800),
