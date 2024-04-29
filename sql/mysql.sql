@@ -390,7 +390,7 @@ alter table TEST_ACCOUNT.REGISTRATION add constraint REGISTRATION_PRESCRIPTION_F
     references TEST_ACCOUNT.PRESCRIPTION (PRESCRIPTION_ID) on delete restrict on update restrict;
 
 alter table TEST_ACCOUNT.TREATMENT_FEEDBACK add constraint TREATMENT_FEEDBACK_TREATM_FK1 foreign key (DIAGNOSEDID)
-    references TEST_ACCOUNT.TREATMENT_RECORD (DIAGNOSIS_RECORD_ID) on delete cascade on update restrict;
+    references TEST_ACCOUNT.TREATMENT_RECORD (diagnosed_Id) on delete cascade on update restrict;
 
 alter table TEST_ACCOUNT.TREATMENT_RECORD add constraint TREATMENT_RECORD_DOCTOR_FK1 foreign key (DOCTOR_ID)
     references TEST_ACCOUNT.DOCTOR (DOCTOR_ID) on delete restrict on update restrict;
@@ -402,5 +402,5 @@ alter table TEST_ACCOUNT.TREATMENT_RECORD add constraint TREATMENT_RECORD_PATIEN
     references TEST_ACCOUNT.PATIENT (PATIENT_ID) on delete restrict on update restrict;
 
 alter table TEST_ACCOUNT.TREATMENT_RECORD2 add constraint TREATMENT_RECORD2_TREATME_FK1 foreign key (DIAGNOSE_ID)
-    references TEST_ACCOUNT.TREATMENT_RECORD (DIAGNOSIS_RECORD_ID) on delete cascade on update restrict;
+    references TEST_ACCOUNT.TREATMENT_RECORD (diagnosed_Id) on delete cascade on update restrict;
 

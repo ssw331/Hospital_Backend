@@ -2,9 +2,9 @@ package com.ssw331.hospital.dto;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.Getter;
-import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -14,26 +14,26 @@ import java.sql.Timestamp;
  */
 @Data
 @Getter
-@Table("treatment_info")
+@TableName("treatment_info")
 public class DiagnosedHistory {
-    @TableId
+    @TableId("diagnose_id")
     private String diagnoseId;
-    @TableField
+    @TableField("diagnose_time")
     private Timestamp diagnoseTime;
-    @TableField
+    @TableField("commentstate")
     private BigDecimal commentState;
-    @TableField
+    @TableField("selfReported")
     private String selfReported;
-    @TableField
+    @TableField("present_His")
     private String presentHis;
-    @TableField
+    @TableField("anamnesis")
     private String anamnesis;
-    @TableField
+    @TableField("sign")
     private String sign;
-    @TableField
+    @TableField("clinic_Dia")
     private String clinicDia;
-    @TableField
+    @TableField("advice")
     private String advice;
-    @TableField
+    @TableField("kindQuantity")
     private BigDecimal kindQuantity;
 }

@@ -28,10 +28,10 @@ public class ChatRecordServiceImpl implements ChatRecordService {
 
     @Override
     public boolean addChatRecord(ChatRecord chatRecord) {
-        // Check if the chat record already exists
+        // 检查聊天记录是否存在
         int exists = chatRecordMapper.countByTimestamp(chatRecord.getTimeStamp());
         if (exists==0) {
-            // Save the new chat record
+            // 不存在就插入一条新的记录
             chatRecordMapper.insert(chatRecord);
             return true;
         }
