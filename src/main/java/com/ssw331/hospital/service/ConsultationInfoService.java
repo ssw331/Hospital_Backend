@@ -11,4 +11,8 @@ import java.util.List;
 @Service
 public interface ConsultationInfoService {
     List<ConsultationInfo> findAll();
+    List<ConsultationInfo> findByDoctorId(String doctorId);
+    ConsultationInfo findByAll(ConsultationInfo consultationInfo);
+    int save(ConsultationInfo consultationInfo);
+    int delete(ConsultationInfo consultationInfo);
 }

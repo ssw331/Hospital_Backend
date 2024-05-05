@@ -25,4 +25,38 @@ public class ConsultationInfoServiceImpl implements ConsultationInfoService {
     public List<ConsultationInfo> findAll() {
         return consultationInfoMapper.selectList(new QueryWrapper<>());
     }
+
+    @Override
+    public List<ConsultationInfo> findByDoctorId(String doctorId) {
+        return consultationInfoMapper.selectList(new QueryWrapper<ConsultationInfo>().eq("DOCTOR_ID", doctorId));
+    }
+
+    @Override
+    public ConsultationInfo findByAll(ConsultationInfo consultationInfo) {
+        QueryWrapper<ConsultationInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("DOCTOR_ID", consultationInfo.getDoctorId());
+        queryWrapper.eq("CLINIC_NAME", consultationInfo.getClinicName());
+        queryWrapper.eq("DATE_TIME", consultationInfo.getDateTime());
+        queryWrapper.eq("PERIOD", consultationInfo.getPeriod());
+
+        return consultationInfoMapper.selectOne(queryWrapper);
+    }
+
+    @Override
+    public int save(ConsultationInfo consultationInfo) {
+        return consultationInfoMapper.insert(consultationInfo);
+    }
+
+    @Override
+    public int delete(ConsultationInfo consultationInfo) {
+        QueryWrapper<ConsultationInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("DOCTOR_ID", consultationInfo.getDoctorId());
+        queryWrapper.eq("CLINIC_NAME", consultationInfo.getClinicName());
+        queryWrapper.eq("DATE_TIME", consultationInfo.getDateTime());
+        queryWrapper.eq("PERIOD", consultationInfo.getPeriod());
+
+        return consultationInfoMapper.delete(queryWrapper);
+    }
+
+
 }
