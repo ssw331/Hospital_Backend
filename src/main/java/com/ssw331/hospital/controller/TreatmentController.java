@@ -25,7 +25,7 @@ public class TreatmentController {
             String result = treatmentService.createTreatmentRecord(inputModel);
             return ResultResponse.success(result);
         } catch (Exception ex) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Posting treatment record failed");
         }
     }
 }

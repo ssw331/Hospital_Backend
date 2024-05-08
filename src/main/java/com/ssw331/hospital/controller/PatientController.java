@@ -43,7 +43,7 @@ public class PatientController {
         List<PatientDetails> patientDetails = patientService.getPatientDetailsById(patientId);
 
         if (patientDetails.isEmpty()) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Not Found");
         }
         return ResultResponse.success(patientDetails);
     }

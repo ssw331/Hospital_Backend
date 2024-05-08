@@ -37,7 +37,7 @@ public class DoctorInfoController {
         DoctorInfo doctorInfo = doctorInfoService.findByDoctorId(id);
 
         if (doctorInfo == null) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Not Found");
         }
 
         return ResultResponse.success(doctorInfo);
@@ -48,7 +48,7 @@ public class DoctorInfoController {
         List<DoctorInfo> doctorInfos = doctorInfoService.findByDoctorName(name);
 
         if (doctorInfos == null || doctorInfos.isEmpty()) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("no doctor with this name");
         }
 
         return ResultResponse.success(doctorInfos);
@@ -59,8 +59,7 @@ public class DoctorInfoController {
         List<DoctorInfo> doctorInfos = doctorInfoService.findByDepartmentName(dept);
 
         if (doctorInfos == null || doctorInfos.isEmpty()) {
-            return ResultResponse.failure();
-            // no doctor in the dept
+            return ResultResponse.failure("No Doctor In the Department");
         }
 
         return ResultResponse.success(doctorInfos);
@@ -73,29 +72,29 @@ public class DoctorInfoController {
             return ResultResponse.success(doctorInfo);
         }
 
-        return ResultResponse.failure();
+        return ResultResponse.failure("Add Doctor Failed");
     }
 
     @PutMapping("update")
     public Result<Object> updateDoctorInfo(DoctorInfo doctorInfo) {
         DoctorInfo exitedDoctorInfo = doctorInfoService.findByDoctorId(doctorInfo.getDoctorId());
         if (exitedDoctorInfo == null) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Not Found this doctor");
         }
         int res = doctorInfoService.update(doctorInfo);
         // 这里可能需要异常处理
         if (res > 0) {
-            return ResultResponse.success("update success");
+            return ResultResponse.success("Update Success");
         }
 
-        return ResultResponse.failure();
+        return ResultResponse.failure("Update Failed");
     }
 
     @GetMapping("fee")
     public Result<Object> getDoctorInfo(String doctorId) {
         DoctorInfo doctorInfo = doctorInfoService.findByDoctorId(doctorId);
         if (doctorInfo == null) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Not Found this doctor");
         }
 
         int registrationFee = switch (doctorInfo.getTitle()) {

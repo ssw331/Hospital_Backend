@@ -23,7 +23,7 @@ public class CommentController {
     public Result<Object> getTreatmentFeedback(@RequestParam String patientId) {
         List<String> records = commentService.getDiagnosedHistoriesWithFeedback(patientId);
         if (records.isEmpty()) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Not Found");
         }
         return ResultResponse.success(records);
     }

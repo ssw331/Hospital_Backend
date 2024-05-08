@@ -14,13 +14,6 @@ public class Result<T> implements Serializable {
     private boolean success;
     private T data;
 
-    public Result<T> setResult(boolean success) {
-        this.id = UUID.randomUUID();
-        this.success = success;
-
-        return this;
-    }
-
     public Result<T> setResult(boolean success, T data) {
         this.id = UUID.randomUUID();
         this.success = success;

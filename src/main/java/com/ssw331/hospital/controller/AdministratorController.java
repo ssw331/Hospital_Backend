@@ -29,7 +29,7 @@ public class AdministratorController {
     public Result<Object> getAdministratorById(@PathVariable String id) {
         Administrator administrator = administratorService.getAdministratorById(id);
         if (administrator == null) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Not Found");
         }
         return ResultResponse.success(administrator);
     }
@@ -38,7 +38,7 @@ public class AdministratorController {
     public Result<Object> getAdministratorByName(@RequestParam String name) {
         List<Administrator> administrators = administratorService.getAdministratorByName(name);
         if (administrators.isEmpty()) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Not Found");
         }
         return ResultResponse.success(administrators);
     }

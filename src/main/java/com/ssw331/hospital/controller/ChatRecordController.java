@@ -35,7 +35,7 @@ public class ChatRecordController {
         if (added) {
             return ResultResponse.success(chatRecord);
         } else {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Add record failed");
         }
     }
 }

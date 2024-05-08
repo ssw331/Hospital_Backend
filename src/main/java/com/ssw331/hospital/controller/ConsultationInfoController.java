@@ -26,7 +26,7 @@ public class ConsultationInfoController {
 
     @Getter
     @Setter
-    private class ConsultationInfoApplied{
+    private static class ConsultationInfoApplied{
         String doctorId;
         String clinicName;
         Timestamp dateTime;
@@ -61,15 +61,14 @@ public class ConsultationInfoController {
             doctorInfos.removeIf(doctorInfo -> !doctorInfo.getName().contains(keyword));
         }
         if (doctorInfos.isEmpty()) {
-            // doctor infos empty
-            return ResultResponse.failure();
+            return ResultResponse.failure("Doctor Infos Empty");
         }
         List<ConsultationInfo> consultationInfos = new ArrayList<>();
         for (DoctorInfo doctorInfo : doctorInfos) {
             consultationInfos.addAll(consultationInfoService.findByDoctorId(doctorInfo.getDoctorId()));
         }
         if (consultationInfos.isEmpty()) {
-            return ResultResponse.failure();
+            return ResultResponse.failure("Consultation Infos Empty");
         }
 
         return ResultResponse.success(consultationInfos);
@@ -88,7 +87,7 @@ public class ConsultationInfoController {
                     consultationInfo.getDateTime(),
                     getStartTime(consultationInfo.getPeriod().intValue()),
                     getEndTime(consultationInfo.getPeriod().intValue())
-                    );
+            );
             finalRes.add(consultationInfoApplied);
         }
 
@@ -100,8 +99,7 @@ public class ConsultationInfoController {
         ConsultationInfo oldConsult = consultationInfoService.findByAll(oldConsultationInfo);
         ConsultationInfo existedConsult = consultationInfoService.findByAll(newConsultationInfo);
         if (oldConsult == null || existedConsult != null) {
-            // old one not existed, new one has existed
-            return ResultResponse.failure();
+            return ResultResponse.failure("Old one not existed, or new one has existed");
         }
 
         try {
@@ -122,20 +120,18 @@ public class ConsultationInfoController {
     public Result<Object> cancelConsultationInfo(@RequestBody ConsultationInfo consultationInfo) {
         ConsultationInfo existedConsult = consultationInfoService.findByAll(consultationInfo);
         if (existedConsult == null) {
-            // not existed
-            return ResultResponse.failure();
+            return ResultResponse.failure("Not Found Consultation Info");
         }
 
         consultationInfoService.delete(consultationInfo);
-        return ResultResponse.success("cancelled consultation info");
+        return ResultResponse.success("Cancelled Consultation Info");
     }
 
     @PostMapping("AddConsult")
     public Result<Object> addConsultationInfo(@RequestBody ConsultationInfo consultationInfo) {
         ConsultationInfo existedConsult = consultationInfoService.findByAll(consultationInfo);
         if (existedConsult != null) {
-            // existed consult
-            return ResultResponse.failure();
+            return ResultResponse.failure("Consultation Info already exists");
         }
 
         consultationInfoService.save(consultationInfo);

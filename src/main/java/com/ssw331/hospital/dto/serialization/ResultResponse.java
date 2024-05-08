@@ -8,7 +8,7 @@ public class ResultResponse {
         return new Result<>().setResult(true, data);
     }
 
-    public static Result<Object> failure() {
-        return new Result<>().setResult(false);
+    public static Result<Object> failure(String message) {
+        return new Result<>().setResult(false, message);
     }
 }
