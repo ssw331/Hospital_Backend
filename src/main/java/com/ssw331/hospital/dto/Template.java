@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.Getter;
 
+/**
+ * @author YiR2002
+ */
 @Data
 @Getter
 @TableName("template")

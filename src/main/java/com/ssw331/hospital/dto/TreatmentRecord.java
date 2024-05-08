@@ -20,5 +20,5 @@ public class TreatmentRecord {
     @TableField("doctor_id")
     private String doctorId;
     @TableField("leave_note_id")
-    private String leavenoteId;
+    private String leaveNoteId;
 }

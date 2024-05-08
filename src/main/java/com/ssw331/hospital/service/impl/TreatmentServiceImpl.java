@@ -1,6 +1,7 @@
 package com.ssw331.hospital.service.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ssw331.hospital.dto.*;
 import com.ssw331.hospital.mapper.*;
 import com.ssw331.hospital.service.TreatmentService;
@@ -13,6 +14,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 /**
  * @author WWWsy
@@ -127,5 +129,19 @@ public class TreatmentServiceImpl implements TreatmentService {
         return "Treatment record created successfully.";
     }
 
+    @Override
+    public TreatmentRecord getTreatmentRecord(String diagnosedId) {
+        QueryWrapper<TreatmentRecord> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("DIAGNOSED_ID", diagnosedId);
+        return treatmentRecordMapper.selectOne(queryWrapper);
+    }
+
+    @Override
+    public List<TreatmentRecord> getTreatmentRecordsByPatientId(String patientId) {
+        QueryWrapper<TreatmentRecord> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("PATIENT_ID", patientId);
+
+        return treatmentRecordMapper.selectList(queryWrapper);
+    }
 }
 
