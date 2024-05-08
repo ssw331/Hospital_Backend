@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -51,7 +50,7 @@ public class DiagnosedHistoryController {
     private final DoctorInfoService doctorInfoService;
 
     @Autowired
-    public DiagnosedHistoryController(DiagnosedHistoryService diagnosedHistoryService, TreatmentService treatmentService, PrescriptionService prescriptionService, OutPatientOrderService outPatientOrderService, PatientService patientService, PrescriptionMedicineService prescriptionMedicineService, MedicineDescriptionService medicineDescriptionService, @Qualifier("doctorInfoService") DoctorInfoService doctorInfoService) {
+    public DiagnosedHistoryController(DiagnosedHistoryService diagnosedHistoryService, TreatmentService treatmentService, PrescriptionService prescriptionService, OutPatientOrderService outPatientOrderService, PatientService patientService, PrescriptionMedicineService prescriptionMedicineService, MedicineDescriptionService medicineDescriptionService, DoctorInfoService doctorInfoService) {
         this.diagnosedHistoryService = diagnosedHistoryService;
         this.treatmentService = treatmentService;
         this.prescriptionService = prescriptionService;
