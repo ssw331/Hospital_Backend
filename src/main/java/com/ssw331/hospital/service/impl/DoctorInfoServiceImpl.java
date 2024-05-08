@@ -22,12 +22,32 @@ public class DoctorInfoServiceImpl implements DoctorInfoService {
     }
 
     @Override
-    public List<DoctorInfo> findByDoctorId(int doctorId) {
-        return doctorInfoMapper.selectList(new QueryWrapper<DoctorInfo>().eq("DOCTOR_ID", doctorId));
+    public DoctorInfo findByDoctorId(String doctorId) {
+        return doctorInfoMapper.selectById(doctorId);
+    }
+
+    @Override
+    public List<DoctorInfo> findByDoctorName(String doctorName) {
+        return doctorInfoMapper.selectList(new QueryWrapper<DoctorInfo>().eq("NAME", doctorName));
     }
 
     @Override
     public List<DoctorInfo> findByDepartmentName(String departmentName) {
         return doctorInfoMapper.selectList(new QueryWrapper<DoctorInfo>().eq("SECONDARY_DEPARTMENT", departmentName));
+    }
+
+    @Override
+    public List<DoctorInfo> findAll() {
+        return doctorInfoMapper.selectList(new QueryWrapper<>());
+    }
+
+    @Override
+    public int insert(DoctorInfo doctorInfo) {
+        return doctorInfoMapper.insert(doctorInfo);
+    }
+
+    @Override
+    public int update(DoctorInfo doctorInfo) {
+        return doctorInfoMapper.updateById(doctorInfo);
     }
 }

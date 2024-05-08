@@ -10,6 +10,11 @@ import java.util.List;
  */
 @Service
 public interface DoctorInfoService {
-    List<DoctorInfo> findByDoctorId(int doctorId);
+    DoctorInfo findByDoctorId(String doctorId);
+    List<DoctorInfo> findByDoctorName(String doctorName);
     List<DoctorInfo> findByDepartmentName(String departmentName);
+    List<DoctorInfo> findAll();
+    int insert(DoctorInfo doctorInfo);
+    int update(DoctorInfo doctorInfo);
+
 }
